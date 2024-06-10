@@ -1,0 +1,12 @@
+functions.c: In function ‘obtainClosingBlock’:
+functions.c:118:10: warning: unused variable ‘labelLen’ [-Wunused-variable]
+  118 |      int labelLen = strlen(label);
+      |          ^~~~~~~~
+gcc -g -O0 -Wall -pg -fprofile-arcs -ftest-coverage -L /util/criterion/lib/x86_64-linux-gnu -I /util/criterion/include -o counts-gprof functions.c main.c
+functions.c: In function ‘obtainClosingBlock’:
+functions.c:118:10: warning: unused variable ‘labelLen’ [-Wunused-variable]
+  118 |      int labelLen = strlen(label);
+      |          ^~~~~~~~
+main.c: In function ‘main’:
+main.c:33:25: warning: unused variable ‘globalLinked’ [-Wunused-variable]
+   33 |      struct ParsedFile *globalLinked = parseFile("./TestXMLfile.xml");

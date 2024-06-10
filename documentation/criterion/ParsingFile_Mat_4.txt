@@ -1,0 +1,7 @@
+After correcting ObtainClosingBlock tests.
+============================================================================
+./tests
+[----] tests.c:33: Unexpected signal caught below this line!
+[FAIL] post::opaqueInnerData1: CRASH!
+[====] Synthesis: Tested: 4 | Passing: 3 | Failing: 1 | Crashing: 1 
+make: *** [Makefile:73: andRunTests] Error 1

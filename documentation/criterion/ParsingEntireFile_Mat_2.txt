@@ -1,0 +1,8 @@
+[----] tests.c:72: Assertion Failed
+[----]   
+[----]   The expression annoying->count == 6 is false.
+[----]   
+[FAIL] post::opaqueParseFile: (0.00s)
+[----] tests.c:84: Unexpected signal caught below this line!
+[FAIL] post::opaqueParseLines1: CRASH!
+[====] Synthesis: Tested: 9 | Passing: 7 | Failing: 2 | Crashing: 1 

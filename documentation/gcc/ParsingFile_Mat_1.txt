@@ -1,0 +1,86 @@
+functions.c: In function ‘saveFileState’:
+functions.c:22:33: warning: format not a string literal and no format arguments [-Wformat-security]
+   22 |           fprintf(outputFilePtr,data);
+      |                                 ^~~~
+functions.c: In function ‘obtainClosingBlock’:
+functions.c:32:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   32 |      closingBlock[0] = "<";
+      |                      ^
+functions.c:33:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   33 |      closingBlock[1] = "/";
+      |                      ^
+functions.c: In function ‘obtainInnerData’:
+functions.c:56:38: warning: passing argument 2 of ‘strtok’ makes pointer from integer without a cast [-Wint-conversion]
+   56 |      returnStatement = strtok(string,'>');
+      |                                      ^~~
+      |                                      |
+      |                                      int
+In file included from /util/criterion/include/criterion/internal/assert.h:37,
+                 from /util/criterion/include/criterion/assert.h:1681,
+                 from /util/criterion/include/criterion/criterion.h:32,
+                 from tests.c:1:
+/usr/include/string.h:336:14: note: expected ‘const char * restrict’ but argument is of type ‘int’
+  336 | extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+      |              ^~~~~~
+gcc -c -g -O0 -Wall -std=c11 functions.c
+functions.c: In function ‘saveFileState’:
+functions.c:22:33: warning: format not a string literal and no format arguments [-Wformat-security]
+   22 |           fprintf(outputFilePtr,data);
+      |                                 ^~~~
+functions.c: In function ‘obtainClosingBlock’:
+functions.c:32:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   32 |      closingBlock[0] = "<";
+      |                      ^
+functions.c:33:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   33 |      closingBlock[1] = "/";
+      |                      ^
+functions.c: In function ‘obtainInnerData’:
+functions.c:56:38: warning: passing argument 2 of ‘strtok’ makes pointer from integer without a cast [-Wint-conversion]
+   56 |      returnStatement = strtok(string,'>');
+      |                                      ^~~
+      |                                      |
+      |                                      int
+In file included from functions.c:3:
+/usr/include/string.h:336:14: note: expected ‘const char * restrict’ but argument is of type ‘int’
+  336 | extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+      |              ^~~~~~
+gcc -g -O0 -Wall -pg -fprofile-arcs -ftest-coverage -L /util/criterion/lib/x86_64-linux-gnu -I /util/criterion/include -o tests functions.c tests.c -lcriterion
+functions.c: In function ‘saveFileState’:
+functions.c:22:33: warning: format not a string literal and no format arguments [-Wformat-security]
+   22 |           fprintf(outputFilePtr,data);
+      |                                 ^~~~
+functions.c: In function ‘obtainClosingBlock’:
+functions.c:32:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   32 |      closingBlock[0] = "<";
+      |                      ^
+functions.c:33:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   33 |      closingBlock[1] = "/";
+      |                      ^
+functions.c: In function ‘obtainInnerData’:
+functions.c:56:38: warning: passing argument 2 of ‘strtok’ makes pointer from integer without a cast [-Wint-conversion]
+   56 |      returnStatement = strtok(string,'>');
+      |                                      ^~~
+      |                                      |
+      |                                      int
+In file included from functions.c:3:
+/usr/include/string.h:336:14: note: expected ‘const char * restrict’ but argument is of type ‘int’
+  336 | extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+      |              ^~~~~~
+In file included from tests.c:2:
+functions.c: In function ‘saveFileState’:
+functions.c:22:33: warning: format not a string literal and no format arguments [-Wformat-security]
+   22 |           fprintf(outputFilePtr,data);
+      |                                 ^~~~
+functions.c: In function ‘obtainClosingBlock’:
+functions.c:32:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   32 |      closingBlock[0] = "<";
+      |                      ^
+functions.c:33:22: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   33 |      closingBlock[1] = "/";
+      |                      ^
+functions.c: In function ‘obtainInnerData’:
+functions.c:56:38: warning: passing argument 2 of ‘strtok’ makes pointer from integer without a cast [-Wint-conversion]
+   56 |      returnStatement = strtok(string,'>');
+      |                                      ^~~
+      |                                      |
+      |                                      int

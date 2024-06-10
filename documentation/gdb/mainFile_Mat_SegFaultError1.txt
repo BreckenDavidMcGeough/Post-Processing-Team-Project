@@ -1,0 +1,27 @@
+Used GDB to figure out why segfault was occuring, turns out its because when calling fgets from console, "./n" is placed at the end of the string.
+______________________________________________________
+
+Temporary breakpoint 1, main (argc=0, argv=0x0) at main.c:8
+8       int main(int argc, char *argv[]){
+(gdb) n
+11           if(argc < 2){
+(gdb) n
+12                printf("Please Enter a filename: ");
+(gdb) n
+13                fgets(temp,256,stdin);
+(gdb) n
+Please Enter a filename: testingFile.txt
+15           strcpy(GlobalUserInputtedFileName,temp);
+(gdb) print temp
+$1 = "testingFile.txt\n\000\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t\000\000\300\t", '\000' <repeats 11 times>, "\001\000\000@\000\000\000\000\000\000\000@\000\000\000\000\002\000\000\000\004", '\000' <repeats 66 times>, "@@UUUU\000\000\377\265\360\000\000\000\000\000\302\000\000\000\000\000\000\000"...
+(gdb) n
+17           printf("%s\n",GlobalUserInputtedFileName);
+(gdb) n
+testingFile.txt
+
+18           saveFileState("./BackupFile.txt");
+(gdb) n
+
+Program received signal SIGSEGV, Segmentation fault.
+_IO_fgets (buf=0x7fffffffe150 "\240\270\372\367\377\177", n=256, fp=0x0) at iofgets.c:47
+47      iofgets.c: No such file or directory.

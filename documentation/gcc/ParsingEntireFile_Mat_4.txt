@@ -1,0 +1,8 @@
+make[1]: Leaving directory '/home/cendue/mkumkows/cse306/post-team05-syntaxsorcerers'
+make v-exec
+make[1]: Entering directory '/home/cendue/mkumkows/cse306/post-team05-syntaxsorcerers'
+gcc -g -O0 -Wall -L /util/criterion/lib/x86_64-linux-gnu -I /util/criterion/include -o mainFile functions.c main.c
+functions.c: In function ‘obtainInnerData’:
+functions.c:142:16: warning: comparison with string literal results in unspecified behavior [-Waddress]
+  142 |      while(cur != "\0"){
+      |                ^~

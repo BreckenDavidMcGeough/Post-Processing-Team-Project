@@ -1,0 +1,5 @@
+[====] Synthesis: Tested: 10 | Passing: 10 | Failing: 0 | Crashing: 0 
+gcov functions.c 
+File 'functions.c'
+Lines executed:91.92% of 99
+Creating 'functions.c.gcov'

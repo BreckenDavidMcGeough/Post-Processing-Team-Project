@@ -1,0 +1,83 @@
+(gdb) handle SIGSTOP nostop
+Signal        Stop      Print   Pass to program Description
+SIGSTOP       No        Yes     Yes             Stopped (signal)
+(gdb) break parseLines
+Breakpoint 1 at 0x5557790d1961: file functions.c, line 33.
+(gdb) break parseFile
+Breakpoint 2 at 0x5557790d17b9: file functions.c, line 11.
+(gdb) c
+Continuing.
+
+Program received signal SIGSTOP, Stopped (signal).
+
+Program received signal SIGSTOP, Stopped (signal).
+[New Thread 0x7f443654d700 (LWP 2113305)]
+
+Thread 2 "tests" received signal SIGSTOP, Stopped (signal).
+
+Thread 1 "tests" received signal SIGSTOP, Stopped (signal).
+
+Thread 2 "tests" received signal SIGSTOP, Stopped (signal).
+
+Thread 1 "tests" hit Breakpoint 2, parseFile (filelocation=0x0) at functions.c:11
+11      struct ParsedFile *parseFile(char* filelocation){
+(gdb) c
+Continuing.
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (lines=0x0, attachTo=0x0, 
+    mainFile=0x7ffc57c53b00, which=0) at functions.c:33
+33      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) n
+34           if(attachTo == NULL && which != 2){
+(gdb) 
+37           char *label = obtainLabelName(lines);
+(gdb) 
+38           printf("%s\n",label);
+(gdb) 
+39           if(strcmp(label,"") == 0){
+(gdb) c
+Continuing.
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (
+    lines=0x5557790d1d5c <createLine+229> "H\213E\360ǀ\350'", 
+    attachTo=0x5557790d1670 <_start>, mainFile=0x7ffc57c53a70, which=21847)
+    at functions.c:33
+33      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) n
+34           if(attachTo == NULL && which != 2){
+(gdb) print lines
+$1 = 0x55577a5c4da0 "\n    <OBTUSE> Rubber goose </OBTUSE>\n    <APPLE> LOVES THEIR CABLES </APPLE>\n    <FRUITS>\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    </FRUITS>\n"
+(gdb) n
+37           char *label = obtainLabelName(lines);
+(gdb) 
+38           printf("%s\n",label);
+(gdb) 
+39           if(strcmp(label,"") == 0){
+(gdb) 
+42           mainFile->count += 1;
+(gdb) 
+43           char *totalData = obtainInnerData(lines);
+(gdb) s
+obtainInnerData (
+    string=0x7f44367ba6a0 <_IO_2_1_stdout_> "\204*\255", <incomplete sequence \373>) at functions.c:139
+139     char* obtainInnerData(char * string){
+(gdb) n
+140          char* Label = obtainLabelName(string);
+(gdb) print string
+$2 = 0x55577a5c4da0 "\n    <OBTUSE> Rubber goose </OBTUSE>\n    <APPLE> LOVES THEIR CABLES </APPLE>\n    <FRUITS>\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    </FRUITS>\n"
+(gdb) n
+141          char *ClosingBlock = obtainClosingBlock(Label);
+(gdb) 
+143          char *dup = (char *)malloc(strlen(string));
+(gdb) 
+144          memcpy(dup,string + strlen(Label) + 2,strlen(string));
+(gdb) print string
+$3 = 0x55577a5c4da0 "\n    <OBTUSE> Rubber goose </OBTUSE>\n    <APPLE> LOVES THEIR CABLES </APPLE>\n    <FRUITS>\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    </FRUITS>\n"
+(gdb) n
+145          char *cur = dup;
+(gdb) print string
+$4 = 0x55577a5c4da0 "\n    <OBTUSE> Rubber goose </OBTUSE>\n    <APPLE> LOVES THEIR CABLES </APPLE>\n    <FRUITS>\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    </FRUITS>\n"
+(gdb) print dup
+$5 = 0x55577a5c9ed0 "TUSE> Rubber goose </OBTUSE>\n    <APPLE> LOVES THEIR CABLES </APPLE>\n    <FRUITS>\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    </FRUITS>\n"
+(gdb) Quit
+(gdb) quit

@@ -1,0 +1,353 @@
+******************************************************************************
+cerf {~/cse306/post-team05-syntaxsorcerers} > val
+valgrind           valgrind.bin       valgrind-di-server valgrind-listener  validlocale        
+cerf {~/cse306/post-team05-syntaxsorcerers} > valgrind --leak-check ./ma
+main.c     main.gcda  main.gcno  
+cerf {~/cse306/post-team05-syntaxsorcerers} > valgrind --leak-check ./counts-gprof ./TestXMLfile.xml 
+valgrind: Unknown option: --leak-check
+valgrind: Use --help for more information or consult the user manual.
+cerf {~/cse306/post-team05-syntaxsorcerers} > valgrind --leak-check=yes ./counts-gprof ./TestXMLfile.xml
+valgrind: .=yes/counts-gprof: No such file or directory
+cerf {~/cse306/post-team05-syntaxsorcerers} > valgrind --leak-check=yes ./counts-gprof ./TestXMLfile.xml
+==2261887== Memcheck, a memory error detector
+==2261887== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2261887== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==2261887== Command: ./counts-gprof ./TestXMLfile.xml
+==2261887== 
+./TestXMLfile.xml
+==2261887== Conditional jump or move depends on uninitialised value(s)
+==2261887==    at 0x483EC2D: strcat (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10A7CD: parseFile (functions.c:26)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== Conditional jump or move depends on uninitialised value(s)
+==2261887==    at 0x483EC37: strcat (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AF5A: obtainClosingBlock (functions.c:125)
+==2261887==    by 0x10B173: obtainInnerData (functions.c:156)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+? quit
+==2261887== 
+==2261887== Process terminating with default action of signal 27 (SIGPROF)
+==2261887==    at 0x497171A: __open_nocancel (open64_nocancel.c:45)
+==2261887==    by 0x497F4FF: write_gmon (gmon.c:370)
+==2261887==    by 0x497FD5E: _mcleanup (gmon.c:444)
+==2261887==    by 0x48A48A6: __run_exit_handlers (exit.c:108)
+==2261887==    by 0x48A4A5F: exit (exit.c:139)
+==2261887==    by 0x10B789: main (main.c:68)
+==2261887== 
+==2261887== HEAP SUMMARY:
+==2261887==     in use at exit: 328,714 bytes in 39 blocks
+==2261887==   total heap usage: 46 allocs, 7 frees, 356,282 bytes allocated
+==2261887== 
+==2261887== 1,000 bytes in 1 blocks are definitely lost in loss record 3 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AF31: obtainClosingBlock (functions.c:122)
+==2261887==    by 0x10B173: obtainInnerData (functions.c:156)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 1,000 bytes in 1 blocks are definitely lost in loss record 4 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AF31: obtainClosingBlock (functions.c:122)
+==2261887==    by 0x10B173: obtainInnerData (functions.c:156)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 1,000 bytes in 1 blocks are definitely lost in loss record 5 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AF31: obtainClosingBlock (functions.c:122)
+==2261887==    by 0x10B173: obtainInnerData (functions.c:156)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 1,000 bytes in 1 blocks are definitely lost in loss record 6 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AF31: obtainClosingBlock (functions.c:122)
+==2261887==    by 0x10B173: obtainInnerData (functions.c:156)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 1,000 bytes in 1 blocks are definitely lost in loss record 7 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AF31: obtainClosingBlock (functions.c:122)
+==2261887==    by 0x10B173: obtainInnerData (functions.c:156)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 1,000 bytes in 1 blocks are definitely lost in loss record 8 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AF31: obtainClosingBlock (functions.c:122)
+==2261887==    by 0x10B173: obtainInnerData (functions.c:156)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 9 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10A92D: parseLines (functions.c:45)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 10 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10B151: obtainInnerData (functions.c:155)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 11 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B181: obtainInnerData (functions.c:158)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 12 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10A92D: parseLines (functions.c:45)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 13 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10B151: obtainInnerData (functions.c:155)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 14 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B181: obtainInnerData (functions.c:158)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 15 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10A92D: parseLines (functions.c:45)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 16 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10B151: obtainInnerData (functions.c:155)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 17 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B181: obtainInnerData (functions.c:158)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 18 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10A92D: parseLines (functions.c:45)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 19 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10B151: obtainInnerData (functions.c:155)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 20 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B181: obtainInnerData (functions.c:158)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 21 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10A92D: parseLines (functions.c:45)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 22 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10B151: obtainInnerData (functions.c:155)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 23 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B181: obtainInnerData (functions.c:158)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 24 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10A92D: parseLines (functions.c:45)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 25 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B0DF: obtainLabelName (functions.c:148)
+==2261887==    by 0x10B151: obtainInnerData (functions.c:155)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,000 bytes in 1 blocks are definitely lost in loss record 26 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10B181: obtainInnerData (functions.c:158)
+==2261887==    by 0x10A98A: parseLines (functions.c:50)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,232 bytes in 1 blocks are definitely lost in loss record 33 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AC97: createLine (functions.c:84)
+==2261887==    by 0x10AA56: parseLines (functions.c:58)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,232 bytes in 1 blocks are definitely lost in loss record 34 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AC97: createLine (functions.c:84)
+==2261887==    by 0x10AA0E: parseLines (functions.c:55)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,232 bytes in 1 blocks are definitely lost in loss record 35 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AC97: createLine (functions.c:84)
+==2261887==    by 0x10A9BD: parseLines (functions.c:52)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,232 bytes in 1 blocks are definitely lost in loss record 36 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AC97: createLine (functions.c:84)
+==2261887==    by 0x10A9BD: parseLines (functions.c:52)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,232 bytes in 1 blocks are definitely lost in loss record 37 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AC97: createLine (functions.c:84)
+==2261887==    by 0x10AA0E: parseLines (functions.c:55)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== 10,232 bytes in 1 blocks are definitely lost in loss record 38 of 39
+==2261887==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2261887==    by 0x10AC97: createLine (functions.c:84)
+==2261887==    by 0x10A9BD: parseLines (functions.c:52)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10ABE5: parseLines (functions.c:75)
+==2261887==    by 0x10AC31: parseLines (functions.c:77)
+==2261887==    by 0x10ABB1: parseLines (functions.c:72)
+==2261887==    by 0x10AACA: parseLines (functions.c:66)
+==2261887==    by 0x10A831: parseFile (functions.c:29)
+==2261887==    by 0x10B476: main (main.c:33)
+==2261887== 
+==2261887== LEAK SUMMARY:
+==2261887==    definitely lost: 247,392 bytes in 30 blocks
+==2261887==    indirectly lost: 0 bytes in 0 blocks
+==2261887==      possibly lost: 0 bytes in 0 blocks
+==2261887==    still reachable: 81,322 bytes in 9 blocks
+==2261887==         suppressed: 0 bytes in 0 blocks
+==2261887== Reachable blocks (those to which a pointer was found) are not shown.
+==2261887== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==2261887== 
+==2261887== Use --track-origins=yes to see where uninitialised values come from
+==2261887== For lists of detected and suppressed errors, rerun with: -s
+==2261887== ERROR SUMMARY: 37 errors from 32 contexts (suppressed: 0 from 0)

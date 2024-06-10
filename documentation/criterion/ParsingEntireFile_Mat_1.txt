@@ -1,0 +1,3 @@
+Opaque Tests
+
+[====] Synthesis: Tested: 8 | Passing: 6 | Failing: 2 | Crashing: 1 

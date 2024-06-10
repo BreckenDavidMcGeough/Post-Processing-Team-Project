@@ -1,0 +1,24 @@
+Helped me realize that the positions I was storing my data was wrong.
+===============================================================================
+
+27           closingBlock[0] = '<';
+(gdb) 
+28           closingBlock[1] = '/';
+(gdb) 
+29           strcat(closingBlock,label);
+(gdb) 
+30           closingBlock[labelLen] = '>';
+(gdb) print closingBlock
+$1 = 0x55d25110dce0 "</ENDING"
+(gdb) n
+31           closingBlock[labelLen + 1] = '\0';
+(gdb) print ClosingBlock
+No symbol "ClosingBlock" in current context.
+(gdb) print closingBlock
+$2 = 0x55d25110dce0 "</ENDI>G"
+(gdb) n
+32           return closingBlock;
+(gdb) print closingBlock
+$3 = 0x55d25110dce0 "</ENDI>"
+(gdb) n
+33      };

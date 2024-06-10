@@ -1,0 +1,19 @@
+Figuring Out where the SEGFAULT was occuring
+-----------------------------------------------------------------------------------
+Thread 1 "tests" hit Breakpoint 1, obtainLabelName (string=0x55a20a91d25f "ENDING") at functions.c:37
+37      char* obtainLabelName(char* string){
+(gdb) n
+38           char *before = strtok(string,">");
+(gdb) n
+
+Thread 1 "tests" received signal SIGSEGV, Segmentation fault.
+__GI___strtok_r (s=0x55a20a91d266 "<ENDING>Hello</ENDING>", delim=0x55a20a91d00c ">", save_ptr=0x7fcf9404cfc8 <olds>)
+    at strtok_r.c:72
+72      strtok_r.c: No such file or directory.
+(gdb) n
+Couldn't get registers: No such process.
+Couldn't get registers: No such process.
+(gdb) [Thread 0x7fcf93dde700 (LWP 678816) exited]
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.

@@ -1,0 +1,12 @@
+[----] tests.c:6: Assertion Failed
+[----]   
+[----]   Obtained: NDING        Expected: </ENDING>
+[----]   
+[FAIL] post::opaqueClosingBlock1: (0.00s)
+[----] tests.c:25: Unexpected signal caught below this line!
+[FAIL] post::opaqueLabelName2: CRASH!
+[----] tests.c:33: Unexpected signal caught below this line!
+[FAIL] post::opaqueInnerData1: CRASH!
+[----] tests.c:21: Unexpected signal caught below this line!
+[FAIL] post::opaqueLabelName1: CRASH!
+[====] Synthesis: Tested: 4 | Passing: 0 | Failing: 4 | Crashing: 3 

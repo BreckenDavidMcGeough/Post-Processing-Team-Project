@@ -1,0 +1,60 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+100.11      0.02     0.02        1    20.02    20.02  parseLines
+  0.00      0.02     0.00       18     0.00     0.00  obtainLabelName
+  0.00      0.02     0.00        6     0.00     0.00  createLine
+  0.00      0.02     0.00        6     0.00     0.00  obtainClosingBlock
+  0.00      0.02     0.00        6     0.00     0.00  obtainInnerData
+  0.00      0.02     0.00        1     0.00    20.02  parseFile
+  0.00      0.02     0.00        1     0.00     0.00  saveFileState
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 49.95% of 0.02 seconds
+
+index % time    self  children    called     name
+                0.00    0.02       1/1           main [3]
+[1]    100.0    0.00    0.02       1         parseFile [1]
+                0.02    0.00       1/1           parseLines [2]
+-----------------------------------------------
+                                  12             parseLines [2]
+                0.02    0.00       1/1           parseFile [1]
+[2]    100.0    0.02    0.00       1+12      parseLines [2]
+                0.00    0.00      12/18          obtainLabelName [4]
+                0.00    0.00       6/6           obtainInnerData [7]
+                0.00    0.00       6/6           createLine [5]
+                                  12             parseLines [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]    100.0    0.00    0.02                 main [3]
+                0.00    0.02       1/1           parseFile [1]
+                0.00    0.00       1/1           saveFileState [8]
+-----------------------------------------------
+                0.00    0.00       6/18          obtainInnerData [7]
+                0.00    0.00      12/18          parseLines [2]
+[4]      0.0    0.00    0.00      18         obtainLabelName [4]
+-----------------------------------------------
+                0.00    0.00       6/6           parseLines [2]
+[5]      0.0    0.00    0.00       6         createLine [5]
+-----------------------------------------------
+                0.00    0.00       6/6           obtainInnerData [7]
+[6]      0.0    0.00    0.00       6         obtainClosingBlock [6]
+-----------------------------------------------
+                0.00    0.00       6/6           parseLines [2]
+[7]      0.0    0.00    0.00       6         obtainInnerData [7]
+                0.00    0.00       6/18          obtainLabelName [4]
+                0.00    0.00       6/6           obtainClosingBlock [6]
+-----------------------------------------------
+                0.00    0.00       1/1           main [3]
+[8]      0.0    0.00    0.00       1         saveFileState [8]
+-----------------------------------------------
+
+Index by function name
+
+   [5] createLine              [4] obtainLabelName         [8] saveFileState
+   [6] obtainClosingBlock      [1] parseFile
+   [7] obtainInnerData         [2] parseLines

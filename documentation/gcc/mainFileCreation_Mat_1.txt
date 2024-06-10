@@ -1,0 +1,9 @@
+functions.c:18:33: warning: format not a string literal and no format arguments [-Wformat-security]
+   18 |           fprintf(outputFilePtr,data);
+      |                                 ^~~~
+gcc -g -O0 -Wall -pg -fprofile-arcs -ftest-coverage -L /util/criterion/lib/x86_64-linux-gnu -I /util/criterion/include -o tests functions.c tests.c -lcriterion
+functions.c: In function ‘saveFileState’:
+functions.c:18:33: warning: format not a string literal and no format arguments [-Wformat-security]
+   18 |           fprintf(outputFilePtr,data);
+      |                                 ^~~~
+make[1]: Leaving directory '/home/cendue/mkumkows/cse306/post-team05-syntaxsorcerers'

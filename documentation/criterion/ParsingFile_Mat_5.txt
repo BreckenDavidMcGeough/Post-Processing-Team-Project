@@ -1,0 +1,13 @@
+******************************************************************************
+** Running tests. This may take a minute...
+******************************************************************************
+./tests
+[====] Synthesis: Tested: 5 | Passing: 5 | Failing: 0 | Crashing: 0 
+gcov functions.c 
+File 'functions.c'
+Lines executed:100.00% of 33
+Creating 'functions.c.gcov'
+
+******************************************************************************
+** Done!
+** Look at functions.c.gcov for gcov annotated source code with execution.

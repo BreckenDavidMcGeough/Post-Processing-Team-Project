@@ -1,0 +1,11 @@
+I realized that I forgot to change the functions in the tests, this is the corrected criterion tests.
+After gdb failed to stop at requested break, I realized that the function was never called.
+-------------------------------------------------------------------------------------------
+[----] tests.c:11: Assertion Failed
+[----]   
+[----]   Obtained: </ENDI>      Expected: </ENDING>
+[----]   
+[FAIL] post::opaqueClosingBlock1: (0.00s)
+[----] tests.c:33: Unexpected signal caught below this line!
+[FAIL] post::opaqueInnerData1: CRASH!
+[====] Synthesis: Tested: 4 | Passing: 2 | Failing: 2 | Crashing: 1 

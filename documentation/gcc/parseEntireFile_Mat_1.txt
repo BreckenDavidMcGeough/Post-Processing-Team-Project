@@ -1,0 +1,28 @@
+functions.c: In function ‘parseFile’:
+functions.c:12:66: error: ‘ParsedFile’ undeclared (first use in this function)
+   12 |      struct ParsedFile *temp = (struct ParsedFile*)malloc(sizeof(ParsedFile));;
+      |                                                                  ^~~~~~~~~~
+functions.c:12:66: note: each undeclared identifier is reported only once for each function it appears in
+functions.c:17:6: error: ‘fileptr’ undeclared (first use in this function)
+   17 |      fileptr = fopen(GlobalUserInputtedFileName,"r");
+      |      ^~~~~~~
+functions.c:31:33: error: too few arguments to function ‘obtainInnerData’
+   31 |                strcpy(totalData,obtainInnerData())
+      |                                 ^~~~~~~~~~~~~~~
+In file included from functions.c:5:
+functions.h:6:7: note: declared here
+    6 | char *obtainInnerData(char* string);
+      |       ^~~~~~~~~~~~~~~
+functions.c:31:51: error: expected ‘;’ before ‘}’ token
+   31 |                strcpy(totalData,obtainInnerData())
+      |                                                   ^
+      |                                                   ;
+   32 | 
+   33 |           }
+      |           ~                                        
+functions.c: In function ‘createLine’:
+functions.c:45:67: error: ‘ParsedLine’ undeclared (first use in this function)
+   45 |      struct ParsedLine *temp = (struct ParsedLine *)malloc(sizeof(ParsedLine));
+      |                                                                   ^~~~~~~~~~
+functions.c:46:25: warning: unused variable ‘temp2’ [-Wunused-variable]
+   46 |      struct ParsedLine *temp2 = (struct ParsedLine *)malloc(sizeof(ParsedLine));

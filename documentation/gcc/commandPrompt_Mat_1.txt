@@ -1,0 +1,7 @@
+.\main.c: In function 'main':
+.\main.c:16:25: warning: the comparison will always evaluate as 'false' for the address of 'userInput' will never be NULL [-Waddress]
+   16 |           if (userInput == NULL){
+      |                         ^~
+.\main.c:11:10: note: 'userInput' declared here
+   11 |     char userInput[50] = "";
+      |          ^~~~~~~~~

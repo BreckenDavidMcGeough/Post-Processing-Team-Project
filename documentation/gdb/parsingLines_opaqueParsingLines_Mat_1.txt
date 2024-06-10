@@ -1,0 +1,47 @@
+
+Figuring out why there is a seg fault
+_____________
+
+39      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) n
+40           if(attachTo == NULL && which != 2){
+(gdb) 
+43           char *label = obtainLabelName(lines);
+(gdb) print which
+$1 = 2
+(gdb) n
+44           printf("%s\n",label);
+(gdb) 
+45           if(strcmp(label,"") == 0){
+(gdb) 
+48           mainFile->count += 1;
+(gdb) 
+49           char *totalData = obtainInnerData(lines);
+(gdb) print mainFile->count
+$2 = 1
+(gdb) n
+50           printf("%s\n",totalData);
+(gdb) 
+51           if(which == 0){
+(gdb) 
+54           else if(which == 1){
+(gdb) 
+58                mainFile->head = createLine(label,"",totalData);
+(gdb) 
+61           int totalBlockSize = 2*strlen(label) + 5 + strlen(totalData);
+(gdb) print mainFile->head
+$3 = (struct ParsedLine *) 0x5576b7241880
+(gdb) print mainFile->head->Label
+$4 = "TEST1", '\000' <repeats 94 times>
+(gdb) print mainFile->head->InnerText
+$5 = "<TEST2>apple</TEST2>", '\000' <repeats 9979 times>
+(gdb) n
+63           parseLines(totalData,attachTo->InnerTextParsed,mainFile,1);
+(gdb) n
+
+Thread 1 "tests" received signal SIGSEGV, Segmentation fault.
+0x00005576b62b19e8 in parseLines (
+    lines=0x5576b62b7768 "<TEST1><TEST2>apple</TEST2></TEST1>", attachTo=0x0, 
+    mainFile=0x5576b72413f0, which=2) at functions.c:63
+63           parseLines(totalData,attachTo->InnerTextParsed,mainFile,1);
+(gdb) quit

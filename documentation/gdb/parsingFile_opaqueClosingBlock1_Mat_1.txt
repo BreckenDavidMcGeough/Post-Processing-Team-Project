@@ -1,0 +1,40 @@
+This gdb test helped me realized that the criterion tests were not actually calling the functions.
+--------------------------------------------------------------------------------------------
+Reading symbols from /usr/lib/debug/.build-id/c9/a47e328eb2f1f41bcbcf31f9c11b9e17aa2a83.debug...
+__GI_raise (sig=19) at ../sysdeps/unix/sysv/linux/raise.c:46
+46      ../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+(gdb) handle SIGSTOP nostop
+Signal        Stop      Print   Pass to program Description
+SIGSTOP       No        Yes     Yes             Stopped (signal)
+(gdb) break obtainClosingBlock
+Breakpoint 1 at 0x558c82b4089c: file functions.c, line 24.
+(gdb) b
+Breakpoint 2 at 0x7f45e0cc2fe9: file ../sysdeps/unix/sysv/linux/raise.c, line 46.
+(gdb) n
+
+Program received signal SIGSTOP, Stopped (signal).
+
+Program received signal SIGSTOP, Stopped (signal).
+48      in ../sysdeps/unix/sysv/linux/raise.c
+(gdb) 
+50      in ../sysdeps/unix/sysv/linux/raise.c
+(gdb) 
+bxfi_term_sandbox_ctx (map=0x7ffe0b8c5f60) at ../subprojects/boxfort/src/sandbox-posix.c:305
+305     ../subprojects/boxfort/src/sandbox-posix.c: No such file or directory.
+(gdb) n
+306     in ../subprojects/boxfort/src/sandbox-posix.c
+(gdb) n
+bxfi_main () at ../subprojects/boxfort/src/sandbox.c:54
+54      ../subprojects/boxfort/src/sandbox.c: No such file or directory.
+(gdb) n
+57      in ../subprojects/boxfort/src/sandbox.c
+(gdb) n
+[New Thread 0x7f45e0c00700 (LWP 681359)]
+
+Thread 2 "tests" received signal SIGSTOP, Stopped (signal).
+
+Thread 2 "tests" received signal SIGSTOP, Stopped (signal).
+
+Thread 1 "tests" received signal SIGSTOP, Stopped (signal).
+
+Thread 1 "tests" received signal SIGTRAP, Trace/breakpoint trap.

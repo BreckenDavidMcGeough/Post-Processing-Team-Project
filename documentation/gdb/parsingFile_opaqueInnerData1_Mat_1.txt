@@ -1,0 +1,35 @@
+Figuring out why its segfaulting when obtaining TestInnerData
+I forgot to remove a line of code from a previous implementation.
+===========================================================================================
+Thread 1 "tests" hit Breakpoint 1, obtainInnerData (
+--Type <RET> for more, q to quit, c to continue without paging--c
+    string=0x1 <error: Cannot access memory at address 0x1>) at functions.c:48
+48      char* obtainInnerData(char * string){
+(gdb) n
+49           char* Label = obtainLabelName(string);
+(gdb) 
+50           char *ClosingBlock = obtainClosingBlock(Label);
+(gdb) print Label
+$1 = 0x556582b72c90 "TEST"
+(gdb) n
+51           char *returnStatement = (char *)malloc(strlen(string));
+(gdb) print ClosingBlock
+$2 = 0x556582b72cb0 "</TEST>"
+(gdb) n
+53           returnStatement = strtok(string,">");
+(gdb) print returnStatement
+$3 = 0x556582b72cd0 ""
+(gdb) n
+
+Thread 1 "tests" received signal SIGSEGV, Segmentation fault.
+__GI___strtok_r (s=0x55658176832b "<TEST>I am a test</TEST>", 
+    delim=0x55658176800c ">", save_ptr=0x7fae330d8fc8 <olds>) at strtok_r.c:72
+72      strtok_r.c: No such file or directory.
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 683666] will be detached.
+
+Quit anyway? (y or n) y
+Detaching from program: /home/cendue/mkumkows/cse306/post-team05-syntaxsorcerers/tests, process 683666
+[Inferior 1 (process 683666) detached]

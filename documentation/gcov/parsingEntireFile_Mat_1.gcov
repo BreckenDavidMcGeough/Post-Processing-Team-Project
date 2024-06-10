@@ -1,0 +1,176 @@
+        -:    0:Source:functions.c
+        -:    0:Graph:functions.gcno
+        -:    0:Data:functions.gcda
+        -:    0:Runs:11
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <stdbool.h>
+        -:    5:#include "functions.h"
+        -:    6:#include "globals.h"
+        -:    7:#include "structures.h"
+        -:    8:
+        -:    9:
+        -:   10:
+        1:   11:struct ParsedFile *parseFile(char* filelocation){
+        1:   12:     struct ParsedFile *temp = (struct ParsedFile*)malloc(sizeof(struct ParsedFile));;
+        1:   13:     temp->head = NULL;
+        1:   14:     temp->count = 0;
+        -:   15:
+        1:   16:     FILE *fileptr = fopen(filelocation,"r");
+        -:   17:
+        1:   18:     if(fileptr == NULL){
+    #####:   19:          printf("BAD FILE");
+    #####:   20:          return NULL;
+        -:   21:     }
+        -:   22:
+        -:   23:     char data[256];
+        -:   24:     char totalData[10000];
+        9:   25:     while(fgets(data,256,fileptr) != NULL){
+        8:   26:          strcat(totalData,data);
+        -:   27:     }
+        -:   28:
+        1:   29:     parseLines(totalData,NULL,temp,2);
+        1:   30:     return temp;
+        -:   31:}
+        -:   32:
+       18:   33:struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+        -:   34:
+       18:   35:     if(attachTo == NULL && which != 2){
+    #####:   36:          return NULL;
+        -:   37:     }
+       18:   38:     if(strcmp(lines,"") == 0){
+        3:   39:          return NULL;
+        -:   40:     }
+       15:   41:     char *label = obtainLabelName(lines);
+       15:   42:     if(strcmp(label,"") == 0){
+        7:   43:          return NULL;
+        -:   44:     }
+        8:   45:     mainFile->count += 1;
+        8:   46:     char *totalData = obtainInnerData(lines);
+        8:   47:     if(which == 0){
+        3:   48:          attachTo->next = createLine(label,"",totalData);
+        -:   49:     }
+        5:   50:     else if(which == 1){
+        3:   51:          attachTo->InnerTextParsed = createLine(label,"",totalData);
+        -:   52:     }
+        -:   53:     else{
+        2:   54:          mainFile->head = createLine(label,"",totalData);
+        -:   55:     }
+        8:   56:     int totalBlockSize = 2*strlen(label) + 5 + strlen(totalData);
+        8:   57:     free(label);
+        -:   58:
+        -:   59:     //Obtain the Inner Text 
+        8:   60:     if(which == 2){
+        2:   61:          parseLines(totalData,mainFile->head,mainFile,1);
+        2:   62:          parseLines(strchr(lines,'<') + totalBlockSize,mainFile->head,mainFile,0);
+        -:   63:     }
+        6:   64:     else if(which == 1){
+        3:   65:          parseLines(totalData,attachTo->InnerTextParsed,mainFile,1);
+        -:   66:          //Obtain the *Next statements
+        3:   67:          parseLines(strchr(lines,'<') + totalBlockSize,attachTo->InnerTextParsed,mainFile,0);
+        -:   68:     }
+        -:   69:     else{
+        3:   70:          parseLines(totalData,attachTo->next,mainFile,1);
+        -:   71:          //Obtain the *Next statements
+        3:   72:          parseLines(strchr(lines,'<') + totalBlockSize,attachTo->next,mainFile,0);
+        -:   73:     }
+        8:   74:     free(totalData);
+        8:   75:     return NULL;
+        -:   76:}
+        -:   77:
+        9:   78:struct ParsedLine *createLine(char* Label, char* Tag, char* InnerText){
+        9:   79:     struct ParsedLine *temp = (struct ParsedLine *)malloc(sizeof(struct ParsedLine));
+        9:   80:     memset(temp->Label,'\0',100);
+        9:   81:     memset(temp->Tag,'\0',100);
+        9:   82:     memset(temp->InnerText,'\0',10000);
+        9:   83:     strcpy(temp->Label,Label);
+        9:   84:     strcpy(temp->Tag,Tag);
+        9:   85:     strcpy(temp->InnerText,InnerText);
+        9:   86:     temp->count = 0;
+        9:   87:     temp->next = NULL;
+        9:   88:     temp->prev = NULL;
+        9:   89:     temp->InnerTextParsed = NULL;
+        -:   90:
+        9:   91:     return temp;
+        -:   92:}
+        -:   93:
+        -:   94:
+        -:   95:
+        2:   96:void saveFileState(char* outputFileName){
+        -:   97:     FILE *fileptr;
+        -:   98:     FILE *outputFilePtr;
+        2:   99:     fileptr = fopen(GlobalUserInputtedFileName,"r");
+        -:  100:
+        2:  101:     if(fileptr == NULL){
+        1:  102:          strcpy(GlobalUserInputtedFileName,"");
+        1:  103:          return;
+        -:  104:     }
+        1:  105:     outputFilePtr = fopen(outputFileName,"w");
+        -:  106:     char data[256];
+        2:  107:     while(fgets(data,256,fileptr) != NULL){
+        1:  108:          fprintf(outputFilePtr,"%s",data);
+        -:  109:     }
+        1:  110:     fclose(fileptr);
+        1:  111:     fclose(outputFilePtr);
+        -:  112:}
+        -:  113:
+        -:  114://!Given string of label, convert to closing blocks
+       11:  115:char* obtainClosingBlock(char* label){
+       11:  116:     char *closingBlock = (char*)malloc(1000);
+       11:  117:     closingBlock[0] = '<';
+       11:  118:     closingBlock[1] = '/';
+       11:  119:     strcat(closingBlock,label);
+       11:  120:     strcat(closingBlock,">");
+       11:  121:     return closingBlock;
+        -:  122:};
+        -:  123:
+        -:  124:
+        -:  125://! Given string, obtain nearest label (does not consider tag)
+       27:  126:char* obtainLabelName(char* string){
+        -:  127:     char duplicate[10000];
+        -:  128:     char *before;
+       27:  129:     if(strcmp(string,"") == 0){
+    #####:  130:          return "";
+        -:  131:     }
+       27:  132:     if(strchr(string,'>') == NULL){
+        7:  133:          return  "";
+        -:  134:     }
+        -:  135:
+       20:  136:     strcpy(duplicate,string);
+       20:  137:     before = strtok(duplicate,">");
+       20:  138:     if(before == NULL){
+    #####:  139:          return "";
+        -:  140:     }
+       20:  141:     before = strchr(before,'<')+ 1;
+       20:  142:     char *returnStatement = (char *)malloc(10000);
+       20:  143:     strcpy(returnStatement,before);
+       20:  144:     return returnStatement;
+        -:  145:}
+        -:  146:
+        -:  147://! Will obtain all data in between nearest opening and closing blocks, fails to free pointers
+       10:  148:char* obtainInnerData(char * string){
+       10:  149:     char* Label = obtainLabelName(string);
+       10:  150:     char *ClosingBlock = obtainClosingBlock(Label);
+        -:  151:     char *dupli;
+       10:  152:     dupli = (char *)malloc(10000);
+       10:  153:     string = strchr(string,'<');
+       10:  154:     memcpy(dupli,string + strlen(Label) + 2,strlen(string)-strlen(Label)-2);
+       10:  155:     char *cur = dupli;
+      347:  156:     while(strcmp(cur,"\0") != 0){
+      347:  157:          if(strncmp(cur,ClosingBlock,strlen(ClosingBlock)) == 0){
+       10:  158:               memset(cur,'\0',1);
+       10:  159:               free(Label);
+       10:  160:               free(ClosingBlock);
+       10:  161:               return dupli;
+        -:  162:          }
+      337:  163:          cur += 1;
+        -:  164:     }
+    #####:  165:     free(Label);
+    #####:  166:     free(ClosingBlock);
+    #####:  167:     return "";
+        -:  168:}
+        -:  169:
+    #####:  170:void help() {
+    #####:  171:     return;
+        -:  172:}

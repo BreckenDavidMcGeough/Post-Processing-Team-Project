@@ -1,0 +1,134 @@
+Thread 1 "tests" hit Breakpoint 1, parseLines (
+    lines=0x55cd205c8bc3 <createLine+229> "H\213E\360ǀ\350'", 
+    attachTo=0x55cd205c8650 <_start>, mainFile=0x7fff78e5c4a0, which=0)
+    at functions.c:39
+39      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) 
+40           if(attachTo == NULL && which != 2){
+(gdb) 
+43           char *label = obtainLabelName(lines);
+(gdb) 
+44           printf("%s\n",label);
+(gdb) 
+45           if(strcmp(label,"") == 0){
+(gdb) n
+48           mainFile->count += 1;
+(gdb) 
+49           char *totalData = obtainInnerData(lines);
+(gdb) s
+obtainInnerData (
+    string=0x7f0f6be506a0 <_IO_2_1_stdout_> "\204*\255", <incomplete sequence \373>)
+    at functions.c:142
+142     char* obtainInnerData(char * string){
+(gdb) n
+143          char* Label = obtainLabelName(string);
+(gdb) 
+144          char *ClosingBlock = obtainClosingBlock(Label);
+(gdb) print label
+No symbol "label" in current context.
+(gdb) print Label
+$1 = 0x55cd20c76a00 "pple"
+(gdb) n
+146          char *dup = (char *)malloc(strlen(string));
+(gdb) print ClosingBlock
+$2 = 0x55cd20c76a20 "</pple>"
+(gdb) n
+147          memcpy(dup,string + strlen(Label) + 2,strlen(string));
+(gdb) 
+148          char *cur = dup;
+(gdb) 
+149          while(strcmp(cur,"\0") != 0){
+(gdb) 
+150               if(strncmp(cur,ClosingBlock,strlen(ClosingBlock)) == 0){
+(gdb) 
+154               cur += 1;
+(gdb) 
+149          while(strcmp(cur,"\0") != 0){
+(gdb) 
+150               if(strncmp(cur,ClosingBlock,strlen(ClosingBlock)) == 0){
+(gdb) 
+154               cur += 1;
+(gdb) 
+149          while(strcmp(cur,"\0") != 0){
+(gdb) 
+150               if(strncmp(cur,ClosingBlock,strlen(ClosingBlock)) == 0){
+(gdb) 
+154               cur += 1;
+(gdb) 
+149          while(strcmp(cur,"\0") != 0){
+(gdb) 
+150               if(strncmp(cur,ClosingBlock,strlen(ClosingBlock)) == 0){
+(gdb) 
+154               cur += 1;
+(gdb) 
+149          while(strcmp(cur,"\0") != 0){
+(gdb) 
+150               if(strncmp(cur,ClosingBlock,strlen(ClosingBlock)) == 0){
+(gdb) 
+154               cur += 1;
+(gdb) 
+149          while(strcmp(cur,"\0") != 0){
+(gdb) print cur
+$3 = 0x55cd20c76a45 ""
+(gdb) n
+157          return dup;
+(gdb) print dup
+$4 = 0x55cd20c76a40 "/TEST"
+(gdb) n
+160     }
+(gdb) 
+parseLines (lines=0x55cd20c719c0 "apple", attachTo=0x55cd20c719e0, 
+    mainFile=0x55cd20c6c4d0, which=1) at functions.c:50
+50           printf("%s\n",totalData);
+(gdb) 
+51           if(which == 0){
+(gdb) n
+54           else if(which == 1){
+(gdb) 
+55                attachTo->InnerTextParsed = createLine(label,"",totalData);
+(gdb) 
+61           int totalBlockSize = 2*strlen(label) + 5 + strlen(totalData);
+(gdb) 
+63           if(which == 2){
+(gdb) 
+69                parseLines(totalData,attachTo->InnerTextParsed,mainFile,1);
+(gdb) 
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (
+    lines=0x55cd205c8bc3 <createLine+229> "H\213E\360ǀ\350'", 
+    attachTo=0x55cd205c8650 <_start>, mainFile=0x7fff78e5c440, which=0)
+    at functions.c:39
+39      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) 
+40           if(attachTo == NULL && which != 2){
+(gdb) 
+43           char *label = obtainLabelName(lines);
+(gdb) s
+obtainLabelName (
+    string=0x55cd205c8f26 <obtainLabelName+244> "H\213\205\330\330\377\377H\213M\370dH3\f%(") at functions.c:127
+127     char* obtainLabelName(char* string){
+(gdb) n
+130          strcpy(duplicate,string);
+(gdb) 
+131          before = strtok(duplicate,">");
+(gdb) print duplicate
+$5 = "/TEST\000\000\000\000j\307 \315U\000\000apple\000\000\000\231\322\317k\017\177\000\000\n\000\000\000\000\000\000\000@\304\345x\377\177\000\000P\206\\ \315U\000\000&\217\\ \315U\000\000P\206\\ \315U\000\000\300\031\307 \315U\000\000!\235\345x\377\177\000\000\340i\307 \315U\000\000apple\000\000\000\200\031\307 \315U\000\000<TEST2\000apple</TEST2>\000\000\000\000\240\304\345x\377\177\000\000P\206\\ \315U\000\000&\217\\ \315U\000\000P\206\\ \315U\000\000P\303\306 \315U\000\000\201\235\345x\377\177\000\000`\031\307 \315U\000\000<TEST2\000a"...
+(gdb) n
+132          if(before == NULL){
+(gdb) print before
+$6 = 0x7fff78e59cc0 "/TEST"
+(gdb) print
+$7 = 0x7fff78e59cc0 "/TEST"
+(gdb) n
+135          before = before + 1;
+(gdb) 
+136          char *returnStatement = (char *)malloc(sizeof(before));
+(gdb) print before
+$8 = 0x7fff78e59cc1 "TEST"
+(gdb) n
+137          strcpy(returnStatement,before);
+(gdb) 
+138          return returnStatement;
+(gdb) 
+139     }
+(gdb) 

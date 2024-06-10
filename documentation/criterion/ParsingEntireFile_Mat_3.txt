@@ -1,0 +1,5 @@
+[----] tests.c:88: Unexpected signal caught below this line!
+[FAIL] post::opaqueParseLines1: CRASH!
+[----] tests.c:74: Unexpected signal caught below this line!
+[FAIL] post::opaqueParseFile: CRASH!
+[====] Synthesis: Tested: 10 | Passing: 8 | Failing: 2 | Crashing: 2 

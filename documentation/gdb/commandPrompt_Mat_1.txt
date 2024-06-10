@@ -1,0 +1,18 @@
+Figuring out what the value in userInput is.
+It was "\n"
+
+Thread 1 hit Temporary breakpoint 1, main (argc=1, argv=0x2f0c2eb5cc0) at
+ .\main.c:11
+11          char userInput[50] = "";
+(gdb) n
+13                printf("? ");
+(gdb) n
+? 14              fgets(userInput,50,stdin);
+(gdb) n
+
+13                printf("? ");
+(gdb) print UserInput           userInput
+Undefined command: "prinuserInput".  Try "help".
+(gdb) print userInu put
+$1 = "\n", '\000' <repeats 48 times>
+

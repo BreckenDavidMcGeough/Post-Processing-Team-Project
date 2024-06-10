@@ -1,0 +1,184 @@
+4           printf("|%s|\n",label);
+(gdb) 
+45           mainFile->count += 1;
+(gdb) print attachTo->Label
+$2 = "APPLE", '\000' <repeats 94 times>
+(gdb) n
+46           char *totalData = obtainInnerData(lines);
+(gdb) 
+47           if(which == 0){
+(gdb) print InnerData
+No symbol "InnerData" in current context.
+(gdb) print totalData
+$3 = 0x55da7a324090 "pear"
+(gdb) n
+50           else if(which == 1){
+(gdb) 
+51                attachTo->InnerTextParsed = createLine(label,"",totalData);
+(gdb) 
+57           int totalBlockSize = 2*strlen(label) + 5 + strlen(totalData);
+(gdb) 
+61           if(which == 2){
+(gdb) 
+65           else if(which == 1){
+(gdb) 
+66                parseLines(totalData,attachTo->InnerTextParsed,mainFile,1);
+(gdb) 
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (
+    lines=0x55da78cabe06 <createLine+229> "H\213E\360ǀ\350'", 
+    attachTo=0x55da78cab650 <_start>, mainFile=0x7ffe65fbc470, which=0)
+    at functions.c:33
+33      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) 
+34           if(attachTo == NULL && which != 2){
+(gdb) 
+37           if(strcmp(lines,"") == 0){
+(gdb) 
+40           char *label = obtainLabelName(lines);
+(gdb) 
+41           if(strcmp(label,"") == 0){
+(gdb) 
+42                return NULL;
+(gdb) 
+76      }
+(gdb) 
+68                parseLines(strchr(lines,'<') + totalBlockSize,attachTo,mainFile,0);
+(gdb) 
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (lines=0x55da7a324090 "pear", 
+    attachTo=0x55da7a33ab60, mainFile=0x55da7a3240e0, which=1) at functions.c:33
+33      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) 
+34           if(attachTo == NULL && which != 2){
+(gdb) 
+37           if(strcmp(lines,"") == 0){
+(gdb) 
+40           char *label = obtainLabelName(lines);
+(gdb) 
+41           if(strcmp(label,"") == 0){
+(gdb) 
+44           printf("|%s|\n",label);
+(gdb) 
+45           mainFile->count += 1;
+(gdb) 
+46           char *totalData = obtainInnerData(lines);
+(gdb) 
+47           if(which == 0){
+(gdb) 
+48                attachTo->next = createLine(label,"",totalData);
+(gdb) 
+57           int totalBlockSize = 2*strlen(label) + 5 + strlen(totalData);
+(gdb) 
+61           if(which == 2){
+(gdb) 
+65           else if(which == 1){
+(gdb) 
+71                parseLines(totalData,attachTo,mainFile,1);
+(gdb) 
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (
+    lines=0x55da78cabe06 <createLine+229> "H\213E\360ǀ\350'", 
+    attachTo=0x55da78cab650 <_start>, mainFile=0x7ffe65fbc410, which=0)
+    at functions.c:33
+33      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) 
+34           if(attachTo == NULL && which != 2){
+(gdb) 
+37           if(strcmp(lines,"") == 0){
+(gdb) 
+40           char *label = obtainLabelName(lines);
+(gdb) 
+41           if(strcmp(label,"") == 0){
+(gdb) 
+42                return NULL;
+(gdb) 
+76      }
+(gdb) 
+73                parseLines(strchr(lines,'<') + totalBlockSize,attachTo->next,mainFile,0);
+(gdb) 
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (lines=0x55da7a324010 "BANANA", 
+    attachTo=0x55da7a330a30, mainFile=0x55da7a3240e0, which=1) at functions.c:33
+33      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) 
+34           if(attachTo == NULL && which != 2){
+(gdb) 
+37           if(strcmp(lines,"") == 0){
+(gdb) 
+40           char *label = obtainLabelName(lines);
+(gdb) 
+41           if(strcmp(label,"") == 0){
+(gdb) 
+42                return NULL;
+(gdb) 
+76      }
+(gdb) 
+parseLines (lines=0x55da7a335aae "\n        <FRUIT2>BANANA</FRUIT2>\n    ", 
+    attachTo=0x55da7a330a30, mainFile=0x55da7a3240e0, which=0) at functions.c:75
+75           return NULL;
+(gdb) 
+76      }
+(gdb) 
+75           return NULL;
+(gdb) 
+76      }
+(gdb) print label
+$4 = 0x55da7a33ab00 "FRUIT1"
+(gdb) n
+73                parseLines(strchr(lines,'<') + totalBlockSize,attachTo->next,mainFile,0);
+(gdb) 
+
+Thread 1 "tests" hit Breakpoint 1, parseLines (
+    lines=0x55da7a335a90 "\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    ", attachTo=0x55da7a330a30, mainFile=0x55da7a3240e0, which=1)
+    at functions.c:33
+33      struct ParsedLine *parseLines(char *lines, struct ParsedLine *attachTo,struct ParsedFile *mainFile,int which){
+(gdb) 
+34           if(attachTo == NULL && which != 2){
+(gdb) 
+37           if(strcmp(lines,"") == 0){
+(gdb) 
+40           char *label = obtainLabelName(lines);
+(gdb) 
+41           if(strcmp(label,"") == 0){
+(gdb) 
+42                return NULL;
+(gdb) 
+76      }
+(gdb) 
+parseLines (
+    lines=0x55da7a3267ac "\n    <FRUITS>\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    </FRUITS>\n", attachTo=0x55da7a330a30, 
+    mainFile=0x55da7a3240e0, which=0) at functions.c:75
+75           return NULL;
+(gdb) 
+76      }
+(gdb) 
+parseLines (
+    lines=0x55da7a326784 "\n    <APPLE> LOVES THEIR CABLES </APPLE>\n    <FRUITS>\n        <FRUIT1>pear</FRUIT1>\n        <FRUIT2>BANANA</FRUIT2>\n    </FRUITS>\n", attachTo=0x55da7a326830, mainFile=0x55da7a3240e0, which=0) at functions.c:75
+75           return NULL;
+(gdb) 
+76      }
+(gdb) 
+75           return NULL;
+(gdb) print label
+$5 = 0x55da7a32b830 "OBTUSE"
+(gdb) print attachTo->label
+There is no member named label.
+(gdb) print attachTo->Label
+$6 = "OVERALL", '\000' <repeats 92 times>
+(gdb) print attachTo->next
+$7 = (struct ParsedLine *) 0x55da7a330a30
+(gdb) print attachTo->next->Label
+$8 = "APPLE", '\000' <repeats 94 times>
+(gdb) n
+76      }
+(gdb) print attachTo->InnerTextParsed
+$9 = (struct ParsedLine *) 0x55da7a32b940
+(gdb) print attachTo->InnerTextParsed->label
+There is no member named label.
+(gdb) print attachTo->InnerTextParsed->Label
+$10 = "OBTUSE", '\000' <repeats 93 times>
+(gdb) print attachTo->InnerTextParsed->next->Label
+Cannot access memory at address 0x0
+(gdb) print attachTo->InnerTextParsed->next
+$11 = (struct ParsedLine *) 0x0

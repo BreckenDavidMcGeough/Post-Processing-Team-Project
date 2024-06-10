@@ -1,0 +1,5 @@
+BAD FILE[====] Synthesis: Tested: 20 | Passing: 20 | Failing: 0 | Crashing: 0 
+gcov functions.c 
+File 'functions.c'
+Lines executed:91.61% of 155
+Creating 'functions.c.gcov'
